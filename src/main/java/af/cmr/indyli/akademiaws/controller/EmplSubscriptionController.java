@@ -37,8 +37,8 @@ public class EmplSubscriptionController {
     }
 
     @GetMapping("/attach/{intraSessionId}")
-    public ResponseEntity<IntraSessionFullDTO> attachUser(@PathVariable int intraSessionId, @RequestParam List<Integer> particularsId) throws AkdemiaBusinessException {
-        return ResponseEntity.ok(souscriptionService.create(intraSessionId, particularsId));
+    public ResponseEntity<IntraSessionFullDTO> attachUser(@PathVariable int intraSessionId, @RequestParam List<Integer> employeesId) throws AkdemiaBusinessException {
+        return ResponseEntity.ok(souscriptionService.create(intraSessionId, employeesId));
     }
 
     @PutMapping("/{id}")
