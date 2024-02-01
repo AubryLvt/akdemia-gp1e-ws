@@ -1,6 +1,9 @@
 package af.cmr.indyli.akademiaws.jwtService;
 
+import af.cmr.indyli.akademia.business.dao.PrivilegeRepository;
 import af.cmr.indyli.akademia.business.entity.User;
+import af.cmr.indyli.akademia.business.utils.ConstsValues;
+import jakarta.annotation.Resource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +16,9 @@ public class UserInfoDetails implements UserDetails {
     private String email;
     private String password;
     private List<GrantedAuthority> authorities;
+
+    @Resource(name = ConstsValues.ConstsDAO.PRIVILEGE_DAO_KEY)
+    private PrivilegeRepository privilegeRepository;
 
     public UserInfoDetails(User user) {
         email = user.getEmail();
