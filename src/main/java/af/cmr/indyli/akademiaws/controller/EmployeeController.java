@@ -3,6 +3,7 @@ package af.cmr.indyli.akademiaws.controller;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,8 +31,8 @@ public class EmployeeController {
 	private IEmployeeService employeeService;
 
 	@GetMapping
-	public ResponseEntity<List<EmployeeBasicDTO>> getAll() {
-		return ResponseEntity.ok(ResponseEntity.ok(employeeService.findAll()).getBody());
+	public ResponseEntity<List<EmployeeFullDTO>> getAll() {
+		return ResponseEntity.ok(ResponseEntity.ok(employeeService.findAllByFull()).getBody());
 	}
 
 	@GetMapping("/{id}")
