@@ -1,5 +1,6 @@
 package af.cmr.indyli.akademiaws.config;
 
+import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akademiaws.jwtservice.JwtAuthFilter;
 import af.cmr.indyli.akademiaws.jwtservice.UserInfoService;
 import org.springframework.context.annotation.Bean;
@@ -41,7 +42,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        (request) -> request.requestMatchers("/users/generateToken", "/users/register", "/users/resetpwd/**", "/swagger-ui/**")
+                        (request) -> request.requestMatchers("/users/generateToken", "/users/register", "/users/resetpwd/**", "/swagger-ui/**", "/error/**")
                                 .permitAll().anyRequest().authenticated()).addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
 
