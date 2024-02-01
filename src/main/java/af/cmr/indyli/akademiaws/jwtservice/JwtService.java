@@ -1,4 +1,4 @@
-package af.cmr.indyli.akademiaws.jwtservice;
+package af.cmr.indyli.akademiaws.jwtService;
 
 import af.cmr.indyli.akademia.business.dto.full.UserFullDTO;
 import io.jsonwebtoken.Claims;

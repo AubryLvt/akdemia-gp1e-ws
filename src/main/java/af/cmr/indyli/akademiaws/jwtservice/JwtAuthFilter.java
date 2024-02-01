@@ -1,4 +1,4 @@
-package af.cmr.indyli.akademiaws.jwtservice;
+package af.cmr.indyli.akademiaws.jwtService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

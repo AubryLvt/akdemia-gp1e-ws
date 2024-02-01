@@ -1,4 +1,4 @@
-package af.cmr.indyli.akademiaws.jwtservice;
+package af.cmr.indyli.akademiaws.jwtService;
 
 import af.cmr.indyli.akademia.business.dao.UserRepository;
 import af.cmr.indyli.akademia.business.entity.User;

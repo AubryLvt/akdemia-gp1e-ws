@@ -29,6 +29,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @ComponentScan(basePackages = { "af.cmr.indyli.akademiaws.*" })
 public class AkademiaWsConfig {
 
+	
     @Bean
     public OpenAPI akademiaOpenAPI() {
         return new OpenAPI()
