@@ -1,8 +1,7 @@
 package af.cmr.indyli.akademiaws.config;
 
-import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
-import af.cmr.indyli.akademiaws.jwtservice.JwtAuthFilter;
-import af.cmr.indyli.akademiaws.jwtservice.UserInfoService;
+import af.cmr.indyli.akademiaws.jwtService.JwtAuthFilter;
+import af.cmr.indyli.akademiaws.jwtService.UserInfoService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -7,8 +7,9 @@ import af.cmr.indyli.akademia.business.dto.basic.UserBasicDTO;
 import af.cmr.indyli.akademia.business.dto.full.UserFullDTO;
 import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akademia.business.utils.ConstsValues;
-import af.cmr.indyli.akademiaws.jwtservice.JwtService;
-import af.cmr.indyli.akademiaws.jwtservice.UserInfoService;
+
+import af.cmr.indyli.akademiaws.jwtService.JwtService;
+import af.cmr.indyli.akademiaws.jwtService.UserInfoService;
 import af.cmr.indyli.akademiaws.service.IUserService;
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
