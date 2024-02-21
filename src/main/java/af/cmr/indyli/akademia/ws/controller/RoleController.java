@@ -1,9 +1,8 @@
-package af.cmr.indyli.akademiaws.controller;
+package af.cmr.indyli.akademia.ws.controller;
 
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,45 +14,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import af.cmr.indyli.akademia.business.dto.basic.EmployeeBasicDTO;
-import af.cmr.indyli.akademia.business.dto.full.EmployeeFullDTO;
+import af.cmr.indyli.akademia.business.dto.basic.RoleBasicDTO;
+import af.cmr.indyli.akademia.business.dto.full.RoleFullDTO;
 import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
-import af.cmr.indyli.akademia.business.service.IEmployeeService;
+import af.cmr.indyli.akademia.business.service.IRoleService;
 import af.cmr.indyli.akademia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/employees")
-public class EmployeeController {
+@RequestMapping("/roles")
+public class RoleController {
 
-	@Resource(name = ConstsValues.ServiceKeys.EMPLOYEE_SERVICE_KEY)
-	private IEmployeeService employeeService;
+	@Resource(name = ConstsValues.ServiceKeys.ROLE_SERVICE_KEY)
+	private IRoleService roleService;
 
 	@GetMapping
-	public ResponseEntity<List<EmployeeFullDTO>> getAll() {
-		return ResponseEntity.ok(ResponseEntity.ok(employeeService.findAllByFull()).getBody());
+	public ResponseEntity<List<RoleBasicDTO>> getAll() {
+		return ResponseEntity.ok(ResponseEntity.ok(roleService.findAll()).getBody());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<EmployeeFullDTO> getOne(@PathVariable int id) throws AkdemiaBusinessException {
-		return ResponseEntity.ok(employeeService.findById(id));
+	public ResponseEntity<RoleBasicDTO> getOne(@PathVariable int id) throws AkdemiaBusinessException {
+		return ResponseEntity.ok(roleService.findById(id));
 	}
 
 	@PostMapping
-	public ResponseEntity<EmployeeFullDTO> create(@RequestBody EmployeeFullDTO dto) throws AkdemiaBusinessException {
-		return ResponseEntity.ok(employeeService.create(dto));
+	public ResponseEntity<RoleFullDTO> create(@RequestBody RoleFullDTO dto) throws AkdemiaBusinessException {
+		return ResponseEntity.ok(roleService.create(dto));
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<EmployeeFullDTO> update(@PathVariable int id, @RequestBody EmployeeFullDTO dto)
+	public ResponseEntity<RoleFullDTO> update(@PathVariable int id, @RequestBody RoleFullDTO dto)
 			throws AccessDeniedException, AkdemiaBusinessException {
-		return ResponseEntity.ok(employeeService.update(dto));
+		return ResponseEntity.ok(roleService.update(dto));
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable int id) throws AkdemiaBusinessException, AccessDeniedException {
-		employeeService.deleteById(id);
+		roleService.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
 }

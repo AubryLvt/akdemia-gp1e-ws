@@ -1,5 +1,8 @@
-package af.cmr.indyli.akademiaws.jwtService;
+package af.cmr.indyli.akademia.ws.jwtService;
 
+import af.cmr.indyli.akademia.business.service.impl.UserServiceImpl;
+import af.cmr.indyli.akademia.business.utils.ConstsValues;
+import jakarta.annotation.Resource;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,9 +19,11 @@ import java.io.IOException;
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
-    private final UserInfoService userDetailsService;
 
-    public JwtAuthFilter(JwtService jwtService, UserInfoService userDetailsService) {
+    @Resource(name = ConstsValues.ServiceKeys.USER_SERVICE_KEY)
+    private final UserServiceImpl userDetailsService;
+
+    public JwtAuthFilter(JwtService jwtService, UserServiceImpl userDetailsService) {
         this.jwtService = jwtService;
         this.userDetailsService = userDetailsService;
     }

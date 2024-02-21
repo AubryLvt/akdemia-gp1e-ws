@@ -1,6 +1,6 @@
-package af.cmr.indyli.akademiaws.config;
+package af.cmr.indyli.akademia.ws.config;
 
-import af.cmr.indyli.akademia.business.config.AkdemiaBusinessConfig;
+import af.cmr.indyli.akademia.business.config.AkdemiaBusinessGp1eConfig;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @OpenAPIDefinition(info = @io.swagger.v3.oas.annotations.info.Info(title = "REST API", version = "1.0",
@@ -25,9 +24,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
         @SecurityScheme(name = "bearerToken", type = SecuritySchemeType.HTTP,
                 scheme = "bearer", bearerFormat = "JWT")
 })
-@Import(AkdemiaBusinessConfig.class)
+@Import(AkdemiaBusinessGp1eConfig.class)
 @ComponentScan(basePackages = { "af.cmr.indyli.akademiaws.*" })
-public class AkademiaWsConfig {
+public class AkademiaWsGp1eConfig {
 
 	
     @Bean
@@ -36,10 +35,5 @@ public class AkademiaWsConfig {
                 .info(new Info().title("AKADEMIA-DOC")
                         .description("Documentation of api")
                         .version("1.0"));
-    }
-
-    @Bean(value = "BCRYPT_ENCODER")
-    BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }

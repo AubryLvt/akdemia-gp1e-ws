@@ -1,7 +1,9 @@
-package af.cmr.indyli.akademiaws.config;
+package af.cmr.indyli.akademia.ws.config;
 
-import af.cmr.indyli.akademiaws.jwtService.JwtAuthFilter;
-import af.cmr.indyli.akademiaws.jwtService.UserInfoService;
+import af.cmr.indyli.akademia.business.service.impl.UserServiceImpl;
+import af.cmr.indyli.akademia.business.utils.ConstsValues;
+import af.cmr.indyli.akademia.ws.jwtService.JwtAuthFilter;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,14 +28,17 @@ public class SecurityConfig {
 
     private final JwtAuthFilter authFilter;
 
-    public SecurityConfig(JwtAuthFilter authFilter) {
+    private UserServiceImpl userService;
+
+    public SecurityConfig(JwtAuthFilter authFilter, UserServiceImpl userService) {
         this.authFilter = authFilter;
+        this.userService = userService;
     }
 
     // User Creation
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserInfoService();
+        return userService;
     }
 
     // Configuring HttpSecurity
@@ -42,7 +47,8 @@ public class SecurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         (request) -> request.requestMatchers("/users/generateToken", "/users/register", "/users/resetpwd/**", "/swagger-ui/**", "/error/**")
-                                .permitAll().anyRequest().authenticated()).addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class).build();
+
+                        .permitAll().anyRequest().authenticated()).addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
 
     // Password Encoding

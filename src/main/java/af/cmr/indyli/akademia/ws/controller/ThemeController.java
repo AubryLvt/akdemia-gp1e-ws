@@ -1,4 +1,4 @@
-package af.cmr.indyli.akademiaws.controller;
+package af.cmr.indyli.akademia.ws.controller;
 
 import java.nio.file.AccessDeniedException;
 import java.util.List;
@@ -14,45 +14,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import af.cmr.indyli.akademia.business.dto.basic.ManagerBasicDTO;
-import af.cmr.indyli.akademia.business.dto.full.ManagerFullDTO;
+import af.cmr.indyli.akademia.business.dto.basic.ThemeBasicDTO;
+import af.cmr.indyli.akademia.business.dto.full.ThemeFullDTO;
 import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
-import af.cmr.indyli.akademia.business.service.IManagerService;
+import af.cmr.indyli.akademia.business.service.IThemeService;
 import af.cmr.indyli.akademia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/managers")
-public class ManagerController {
+@RequestMapping("/themes")
+public class ThemeController {
 
-	@Resource(name = ConstsValues.ServiceKeys.MANAGER_SERVICE_KEY)
-	private IManagerService managerService;
+	@Resource(name = ConstsValues.ServiceKeys.THEME_SERVICE_KEY)
+	private IThemeService iThemeService;
 
 	@GetMapping
-	public ResponseEntity<List<ManagerBasicDTO>> getAll() {
-		return ResponseEntity.ok(ResponseEntity.ok(managerService.findAll()).getBody());
+	public ResponseEntity<List<ThemeBasicDTO>> getAll() {
+		return ResponseEntity.ok(ResponseEntity.ok(iThemeService.findAll()).getBody());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<ManagerBasicDTO> getOne(@PathVariable int id) throws AkdemiaBusinessException {
-		return ResponseEntity.ok(managerService.findById(id));
+	public ResponseEntity<ThemeFullDTO> getOne(@PathVariable int id) throws AkdemiaBusinessException {
+		return ResponseEntity.ok(iThemeService.findById(id));
 	}
 
 	@PostMapping
-	public ResponseEntity<ManagerFullDTO> create(@RequestBody ManagerFullDTO dto) throws AkdemiaBusinessException {
-		return ResponseEntity.ok(managerService.create(dto));
+	public ResponseEntity<ThemeFullDTO> create(@RequestBody ThemeFullDTO dto) throws AkdemiaBusinessException {
+		return ResponseEntity.ok(iThemeService.create(dto));
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<ManagerFullDTO> update(@PathVariable int id, @RequestBody ManagerFullDTO dto)
-			throws AccessDeniedException, AkdemiaBusinessException {
-		return ResponseEntity.ok(managerService.update(dto));
+	public ResponseEntity<ThemeFullDTO> update(@PathVariable int id, @RequestBody ThemeFullDTO dto)
+			throws AkdemiaBusinessException, AccessDeniedException {
+		return ResponseEntity.ok(iThemeService.update(dto));
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable int id) throws AkdemiaBusinessException, AccessDeniedException {
-		managerService.deleteById(id);
+		iThemeService.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
 }

@@ -1,16 +1,15 @@
-package af.cmr.indyli.akademiaws.controller;
+package af.cmr.indyli.akademia.ws.controller;
 
-import af.cmr.indyli.akademia.business.dto.AuthRequest;
+import af.cmr.indyli.akademia.business.dto.UserRequestDTO;
 import af.cmr.indyli.akademia.business.dto.UserRegistrationDTO;
 import af.cmr.indyli.akademia.business.dto.UserRegistrationResponseDTO;
 import af.cmr.indyli.akademia.business.dto.basic.UserBasicDTO;
 import af.cmr.indyli.akademia.business.dto.full.UserFullDTO;
 import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akademia.business.service.impl.UserServiceImpl;
 import af.cmr.indyli.akademia.business.utils.ConstsValues;
 
-import af.cmr.indyli.akademiaws.jwtService.JwtService;
-import af.cmr.indyli.akademiaws.jwtService.UserInfoService;
-import af.cmr.indyli.akademiaws.service.IUserService;
+import af.cmr.indyli.akademia.ws.jwtService.JwtService;
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,15 +26,14 @@ import java.util.Map;
 @RequestMapping("/users")
 @CrossOrigin("*")
 public class UserController {
-    private final UserInfoService service;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    @Resource(name = ConstsValues.ServiceKeys.USER_SERVICE)
-    private IUserService userService;
+    @Resource(name = ConstsValues.ServiceKeys.USER_SERVICE_KEY)
+    private UserServiceImpl userService;
 
-    public UserController(UserInfoService service, JwtService jwtService, AuthenticationManager authenticationManager) {
-        this.service = service;
+    public UserController(UserServiceImpl service, JwtService jwtService, AuthenticationManager authenticationManager) {
+        this.userService = service;
         this.jwtService = jwtService;
         this.authenticationManager = authenticationManager;
     }
@@ -72,11 +70,11 @@ public class UserController {
     }
 
     @PostMapping("/generateToken")
-    public ResponseEntity<Map<String, String>> authenticateAndGetToken(@RequestBody AuthRequest authRequest) throws AkdemiaBusinessException {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
+    public ResponseEntity<Map<String, String>> authenticateAndGetToken(@RequestBody UserRequestDTO userRequestDTO) throws AkdemiaBusinessException {
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userRequestDTO.getEmail(), userRequestDTO.getPassword()));
         if (authentication.isAuthenticated()) {
-            UserFullDTO user = userService.findUserByEmail(authRequest.getEmail());
-            List<String> roles = this.service.loadUserByUsername(authRequest.getEmail()).getAuthorities().stream().map(GrantedAuthority::getAuthority).toList();
+            UserFullDTO user = userService.findUserByEmail(userRequestDTO.getEmail());
+            List<String> roles = this.userService.loadUserByUsername(userRequestDTO.getEmail()).getAuthorities().stream().map(GrantedAuthority::getAuthority).toList();
             return ResponseEntity.ok(Map.of("token", jwtService.generateToken(user, roles)));
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "L'utilisateur n'a pas été retrouvé"));

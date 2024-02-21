@@ -1,4 +1,4 @@
-package af.cmr.indyli.akademiaws.controller;
+package af.cmr.indyli.akademia.ws.controller;
 
 import java.nio.file.AccessDeniedException;
 import java.util.List;
@@ -14,46 +14,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import af.cmr.indyli.akademia.business.dto.basic.ValidationTestBasicDTO;
-import af.cmr.indyli.akademia.business.dto.full.ValidationTestFullDTO;
+import af.cmr.indyli.akademia.business.dto.basic.ParticularBasicDTO;
+import af.cmr.indyli.akademia.business.dto.full.ParticularFullDTO;
 import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
-import af.cmr.indyli.akademia.business.service.IValidationTestService;
+import af.cmr.indyli.akademia.business.service.IParticularService;
 import af.cmr.indyli.akademia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/validationtests")
-public class ValidationTestController {
+@RequestMapping("/particular")
+public class ParticularController {
 
-	@Resource(name = ConstsValues.ServiceKeys.VALIDATION_TEST_SERVICE_KEY)
-	private IValidationTestService validationTestService;
+	@Resource(name = ConstsValues.ServiceKeys.PARTICULAR_SERVICE_KEY)
+	private IParticularService particularService;
 
 	@GetMapping
-	public ResponseEntity<List<ValidationTestBasicDTO>> getAll() {
-		return ResponseEntity.ok(ResponseEntity.ok(validationTestService.findAll()).getBody());
+	public ResponseEntity<List<ParticularBasicDTO>> getAll() {
+		return ResponseEntity.ok(ResponseEntity.ok(particularService.findAll()).getBody());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<ValidationTestBasicDTO> getOne(@PathVariable int id) throws AkdemiaBusinessException {
-		return ResponseEntity.ok(validationTestService.findById(id));
+	public ResponseEntity<ParticularFullDTO> getOne(@PathVariable int id) throws AkdemiaBusinessException {
+		return ResponseEntity.ok(particularService.findById(id));
 	}
 
 	@PostMapping
-	public ResponseEntity<ValidationTestFullDTO> create(@RequestBody ValidationTestFullDTO dto)
+	public ResponseEntity<ParticularFullDTO> create(@RequestBody ParticularFullDTO dto)
 			throws AkdemiaBusinessException {
-		return ResponseEntity.ok(validationTestService.create(dto));
+		return ResponseEntity.ok(particularService.create(dto));
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<ValidationTestFullDTO> update(@PathVariable int id, @RequestBody ValidationTestFullDTO dto)
+	public ResponseEntity<ParticularFullDTO> update(@PathVariable int id, @RequestBody ParticularFullDTO dto)
 			throws AccessDeniedException, AkdemiaBusinessException {
-		return ResponseEntity.ok(validationTestService.update(dto));
+		return ResponseEntity.ok(particularService.update(dto));
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable int id) throws AkdemiaBusinessException, AccessDeniedException {
-		validationTestService.deleteById(id);
+		particularService.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
 }

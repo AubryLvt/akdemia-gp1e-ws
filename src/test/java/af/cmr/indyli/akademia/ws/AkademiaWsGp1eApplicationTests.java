@@ -1,10 +1,10 @@
-package af.cmr.indyli.akademiaws;
+package af.cmr.indyli.akademia.ws;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AkademiaWsApplicationTests {
+class AkademiaWsGp1eApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,4 +1,4 @@
-package af.cmr.indyli.akademiaws.controller;
+package af.cmr.indyli.akademia.ws.controller;
 
 import java.nio.file.AccessDeniedException;
 import java.util.List;

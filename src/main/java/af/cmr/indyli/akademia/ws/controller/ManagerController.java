@@ -1,4 +1,4 @@
-package af.cmr.indyli.akademiaws.controller;
+package af.cmr.indyli.akademia.ws.controller;
 
 import java.nio.file.AccessDeniedException;
 import java.util.List;
@@ -14,46 +14,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import af.cmr.indyli.akademia.business.dto.basic.PlanificationBasicDTO;
-import af.cmr.indyli.akademia.business.dto.full.PlanificationFullDTO;
+import af.cmr.indyli.akademia.business.dto.basic.ManagerBasicDTO;
+import af.cmr.indyli.akademia.business.dto.full.ManagerFullDTO;
 import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
-import af.cmr.indyli.akademia.business.service.IPlanificationService;
+import af.cmr.indyli.akademia.business.service.IManagerService;
 import af.cmr.indyli.akademia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/planifications")
-public class PlanificationController {
+@RequestMapping("/managers")
+public class ManagerController {
 
-	@Resource(name = ConstsValues.ServiceKeys.PLANIFICATION_SERVICE_KEY)
-	private IPlanificationService planificationService;
+	@Resource(name = ConstsValues.ServiceKeys.MANAGER_SERVICE_KEY)
+	private IManagerService managerService;
 
 	@GetMapping
-	public ResponseEntity<List<PlanificationBasicDTO>> getAll() {
-		return ResponseEntity.ok(ResponseEntity.ok(planificationService.findAll()).getBody());
+	public ResponseEntity<List<ManagerBasicDTO>> getAll() {
+		return ResponseEntity.ok(ResponseEntity.ok(managerService.findAll()).getBody());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<PlanificationFullDTO> getOne(@PathVariable int id) throws AkdemiaBusinessException {
-		return ResponseEntity.ok(planificationService.findById(id));
+	public ResponseEntity<ManagerBasicDTO> getOne(@PathVariable int id) throws AkdemiaBusinessException {
+		return ResponseEntity.ok(managerService.findById(id));
 	}
 
 	@PostMapping
-	public ResponseEntity<PlanificationFullDTO> create(@RequestBody PlanificationFullDTO dto)
-			throws AkdemiaBusinessException {
-		return ResponseEntity.ok(planificationService.create(dto));
+	public ResponseEntity<ManagerFullDTO> create(@RequestBody ManagerFullDTO dto) throws AkdemiaBusinessException {
+		return ResponseEntity.ok(managerService.create(dto));
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<PlanificationFullDTO> update(@PathVariable int id, @RequestBody PlanificationFullDTO dto)
+	public ResponseEntity<ManagerFullDTO> update(@PathVariable int id, @RequestBody ManagerFullDTO dto)
 			throws AccessDeniedException, AkdemiaBusinessException {
-		return ResponseEntity.ok(planificationService.update(dto));
+		return ResponseEntity.ok(managerService.update(dto));
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable int id) throws AkdemiaBusinessException, AccessDeniedException {
-		planificationService.deleteById(id);
+		managerService.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
 }
