@@ -1,11 +1,11 @@
-package af.cmr.indyli.akademia.ws.controller;
+package af.cmr.indyli.akdemia.ws.controller;
 
-import af.cmr.indyli.akademia.business.dto.basic.RoleBasicDTO;
-import af.cmr.indyli.akademia.business.dto.full.RoleFullDTO;
-import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
-import af.cmr.indyli.akademia.business.service.IRoleService;
-import af.cmr.indyli.akademia.business.utils.ConstsValues;
-import af.cmr.indyli.akademia.ws.utils.AkdemiaUrlBase;
+import af.cmr.indyli.akdemia.business.dto.basic.RoleBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.full.RoleFullDTO;
+import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.IRoleService;
+import af.cmr.indyli.akdemia.business.utils.ConstsValues;
+import af.cmr.indyli.akdemia.ws.utils.AkdemiaUrlBase;
 import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

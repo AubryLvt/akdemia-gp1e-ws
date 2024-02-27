@@ -1,6 +1,6 @@
-package af.cmr.indyli.akademia.ws.service;
+package af.cmr.indyli.akdemia.ws.service;
 
-import af.cmr.indyli.akademia.business.dto.full.UserFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.UserFullDTO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

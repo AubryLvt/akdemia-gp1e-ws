@@ -1,7 +1,7 @@
-package af.cmr.indyli.akademia.ws.config;
+package af.cmr.indyli.akdemia.ws.config;
 
-import af.cmr.indyli.akademia.business.service.IUserService;
-import af.cmr.indyli.akademia.ws.service.JwtAuthFilter;
+import af.cmr.indyli.akdemia.business.service.IUserService;
+import af.cmr.indyli.akdemia.ws.service.JwtAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

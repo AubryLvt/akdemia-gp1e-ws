@@ -1,4 +1,4 @@
-package af.cmr.indyli.akademia.ws.utils;
+package af.cmr.indyli.akdemia.ws.utils;
 
 public class AkdemiaUrlBase {
 	public static final String url = "*";

@@ -1,6 +1,6 @@
-package af.cmr.indyli.akademia.ws.config;
+package af.cmr.indyli.akdemia.ws.config;
 
-import af.cmr.indyli.akademia.business.config.AkdemiaBusinessGp1eConfig;
+import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp1eConfig;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -13,6 +13,6 @@ import org.springframework.context.annotation.Import;
 @OpenAPIDefinition(info = @Info(title = "akdemia", version = "1.0", description = "akdemia", contact = @Contact(name = "akdemia")), security = {@SecurityRequirement(name = "bearerToken")})
 @Import(AkdemiaBusinessGp1eConfig.class)
 @ComponentScan(basePackages = {"af.cmr.indyli.akdemia.ws.*"})
-public class AkademiaWsGp1eConfig {
+public class AkdemiaWsGp1eConfig {
 
 }

@@ -1,6 +1,6 @@
-package af.cmr.indyli.akademia.ws.service;
+package af.cmr.indyli.akdemia.ws.service;
 
-import af.cmr.indyli.akademia.business.service.IUserService;
+import af.cmr.indyli.akdemia.business.service.IUserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

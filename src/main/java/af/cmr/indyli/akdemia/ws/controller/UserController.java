@@ -1,14 +1,14 @@
-package af.cmr.indyli.akademia.ws.controller;
+package af.cmr.indyli.akdemia.ws.controller;
 
-import af.cmr.indyli.akademia.business.dto.UserRegistrationDTO;
-import af.cmr.indyli.akademia.business.dto.UserRegistrationResponseDTO;
-import af.cmr.indyli.akademia.business.dto.UserRequestDTO;
-import af.cmr.indyli.akademia.business.dto.basic.UserBasicDTO;
-import af.cmr.indyli.akademia.business.dto.full.UserFullDTO;
-import af.cmr.indyli.akademia.business.exception.AkdemiaBusinessException;
-import af.cmr.indyli.akademia.business.service.IUserService;
-import af.cmr.indyli.akademia.business.utils.ConstsValues;
-import af.cmr.indyli.akademia.ws.service.JwtService;
+import af.cmr.indyli.akdemia.business.dto.UserRegistrationDTO;
+import af.cmr.indyli.akdemia.business.dto.UserRegistrationResponseDTO;
+import af.cmr.indyli.akdemia.business.dto.UserRequestDTO;
+import af.cmr.indyli.akdemia.business.dto.basic.UserBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.full.UserFullDTO;
+import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.IUserService;
+import af.cmr.indyli.akdemia.business.utils.ConstsValues;
+import af.cmr.indyli.akdemia.ws.service.JwtService;
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
