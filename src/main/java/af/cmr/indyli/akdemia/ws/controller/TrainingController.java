@@ -31,9 +31,9 @@ public class TrainingController {
     private ITrainingService trainingService;
 	
 	/**
-	 * Retrieve a list of all trainings.
+	 * Récupère la liste de tous les formations.
 	 *
-	 * @return ResponseEntity containing the list of trainings.
+	 * @return ResponseEntity contenant la liste des formations.
 	 */
     @GetMapping
     public ResponseEntity<List<TrainingBasicDTO>> getAll() {
@@ -41,11 +41,11 @@ public class TrainingController {
     }
     
     /**
-     * Retrieve information about a training by its identifier.
+     * Récupère les informations sur une formation par son identifiant.
      *
-     * @param id The identifier of the training.
-     * @return ResponseEntity containing information about the training.
-     * @throws AkdemiaBusinessException If a business exception occurs.
+     * @param id L'identifiant de la formation.
+     * @return ResponseEntity contenant les informations sur la formation.
+     * @throws AkdemiaBusinessException Si une exception métier se produit.
      */
     @GetMapping("/{id}")
     public ResponseEntity<TrainingFullDTO> getOne(@PathVariable("id") int id) throws AkdemiaBusinessException {
@@ -53,11 +53,11 @@ public class TrainingController {
     }
 
     /**
-     * Create a new training.
+     * Crée une nouvelle formation.
      *
-     * @param dto Information about the training to create.
-     * @return ResponseEntity containing information about the newly created training.
-     * @throws AkdemiaBusinessException If a business exception occurs.
+     * @param dto Informations sur la formation à créer.
+     * @return ResponseEntity contenant les informations sur la formation nouvellement créée.
+     * @throws AkdemiaBusinessException Si une exception métier se produit.
      */
     @PostMapping
     public ResponseEntity<TrainingFullDTO> create(@RequestBody TrainingFullDTO trainingDTO) throws AkdemiaBusinessException {
@@ -65,13 +65,13 @@ public class TrainingController {
     }
 
     /**
-     * Update information about a training.
+     * Met à jour les informations sur une formation.
      *
-     * @param id  The identifier of the training to update.
-     * @param dto Information about the updated training.
-     * @return ResponseEntity containing information about the updated training.
-     * @throws AccessDeniedException    If access is denied.
-     * @throws AkdemiaBusinessException If a business exception occurs.
+     * @param id  L'identifiant de la formation à mettre à jour.
+     * @param dto Informations sur la formation mise à jour.
+     * @return ResponseEntity contenant les informations sur la formation mise à jour.
+     * @throws AccessDeniedException    Si l'accès est refusé.
+     * @throws AkdemiaBusinessException Si une exception métier se produit.
      */
     @PutMapping("/{id}")
     public ResponseEntity<TrainingFullDTO> update(@PathVariable("id") int id, @RequestBody TrainingFullDTO trainingDTO) 
@@ -80,12 +80,12 @@ public class TrainingController {
     }
 
     /**
-     * Delete a training by its identifier.
+     * Supprime une formation par son identifiant.
      *
-     * @param id The identifier of the training to delete.
-     * @return ResponseEntity indicating the success of the deletion.
-     * @throws AkdemiaBusinessException If a business exception occurs.
-     * @throws AccessDeniedException    If access is denied.
+     * @param id L'identifiant de la formation à supprimer.
+     * @return ResponseEntity indiquant le succès de la suppression.
+     * @throws AkdemiaBusinessException Si une exception métier se produit.
+     * @throws AccessDeniedException    Si l'accès est refusé.
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") int id) throws AkdemiaBusinessException, AccessDeniedException {
