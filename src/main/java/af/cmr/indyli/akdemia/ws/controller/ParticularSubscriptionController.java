@@ -28,8 +28,7 @@ import jakarta.annotation.Resource;
 @RequestMapping("/particularsubscriptions")
 public class ParticularSubscriptionController {
 
-//	@Resource(name = ConstsValues.ServiceKeys.PARTICULAR_SUBSCRIPTION_SERVICE_KEY)
-	@Autowired
+	@Resource(name = ConstsValues.ServiceKeys.PARTICULAR_SUBSCRIPTION_SERVICE_KEY)
     private IParticularSubscriptionService particularSubscriptionService;
 
 	/**
