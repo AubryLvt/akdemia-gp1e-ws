@@ -3,7 +3,6 @@ package af.cmr.indyli.akdemia.ws.controller;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,7 +37,7 @@ public class ParticularSubscriptionController {
 	 */
     @GetMapping
     public ResponseEntity<List<ParticularSubscriptionBasicDTO>> getAll() {
-        return ResponseEntity.ok(ResponseEntity.ok(particularSubscriptionService.findAll()).getBody());
+        return ResponseEntity.ok(particularSubscriptionService.findAll());
     }
     
     /**
@@ -62,8 +61,8 @@ public class ParticularSubscriptionController {
 	 * @throws AkdemiaBusinessException If a business exception occurs.
 	 */
     @PostMapping
-    public ResponseEntity<ParticularSubscriptionFullDTO> create(@RequestBody ParticularSubscriptionFullDTO ParticularSubscriptionDTO) throws AkdemiaBusinessException {
-    	return ResponseEntity.ok(particularSubscriptionService.create(ParticularSubscriptionDTO));
+    public ResponseEntity<ParticularSubscriptionFullDTO> create(@RequestBody ParticularSubscriptionFullDTO particularSubscriptionFullDTO) throws AkdemiaBusinessException {
+    	return ResponseEntity.ok(particularSubscriptionService.create(particularSubscriptionFullDTO));
     }
 
     /**

@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import af.cmr.indyli.akdemia.business.dto.basic.InterSessionBasicDTO;
-import af.cmr.indyli.akdemia.business.dto.basic.SessionBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.InterSessionFullDTO;
-import af.cmr.indyli.akdemia.business.dto.full.SessionFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.IInterSessionService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
