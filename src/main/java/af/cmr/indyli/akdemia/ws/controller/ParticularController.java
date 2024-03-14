@@ -27,7 +27,7 @@ import jakarta.annotation.Resource;
  */
 @RestController
 @CrossOrigin(origins = AkdemiaUrlBase.url, maxAge = AkdemiaUrlBase.maxAge)
-@RequestMapping("/particular")
+@RequestMapping("/particulars")
 public class ParticularController {
 
 	@Resource(name = ConstsValues.ServiceKeys.PARTICULAR_SERVICE_KEY)
