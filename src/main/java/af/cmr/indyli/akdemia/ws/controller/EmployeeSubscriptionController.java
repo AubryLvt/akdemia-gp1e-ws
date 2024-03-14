@@ -1,3 +1,4 @@
+package af.cmr.indyli.akdemia.ws.controller;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
